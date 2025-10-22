@@ -58,7 +58,11 @@ To make my next test report more accurate and effective:
 - Could you provide me with the MVP version of this app?  
 - What is the main purpose of this app?  
 - Who is the target audience of this app?  
-- Could you share some examples of similar apps?  
+- Could you share some examples of similar apps?
+- Can you walk me through which stage of development the app is currently in (alpha, beta, or closer to launch)?
+- What's the roadmap for polishing UX and fixing bugs (before official release)?
+ 
+I'd love to understand these 😊
 
 ---
 
