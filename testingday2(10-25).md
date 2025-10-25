@@ -1,41 +1,77 @@
-show users' own lisitings in the public section which is explore. so it's make tranparency, consistency and user expericence better
-whenI scroll into the lists end it's making unnessary reloadings, I don't even fully scroll to reload, it's just a slight scroll when I come from down to up (heavely noticed only in explore tab)
-When I user try delete a listing, in the warning tab it's better if it's "Delete" instead of "Confirm"
-Cancle(etc.) mark isn't updating until you reload the my booking section. I mean every time the user come from a booking make the tab refresh or somthing (Don't apply that to the explore tab!!)
-The max amounts of the length, width and depth error/warning after enter amount of higher than the recommanded, can't see fully bcz of the layout (my perview on my phone is `max 300...` )
-add notification when a user got a booking or message(etc)
-add a red dot on booking and messages tabs(etc)
-optional : if the notifications are too much, then send a one message called (4+ messges/ Check for books and messages)
-And also there a major problem in the address, phone numbers and vehicle regisration numbers. The problem is the user can enter any number or a letter/char for those things
-example:  location - 55
-          phone number - .
-          vehicle regisration - a37dh**
-all of them are accepted
+# Executive Summary – App Testing Feedback Day 02(10/25/25)
 
-recommend : 
-  phone numbers:
-- phone numbers are often 7-15 numbers included in on all the countries around the world
-  
-| Country | Example Phone Number|Digits  |
-|---------|---------------------|--------|
-|   USA   |+1 202-555-0176      |10      |
-|   LK    |+94 71 234 5678      |9       |
-|   JPN   |+81 3-1234-5678      |9       |
-|   BZL   |+55 11 91234-5678    |10-11   |
+During testing, I identified several usability issues, potential bugs, and areas for improvement. These findings focus on enhancing user experience, navigation flow, and form handling efficiency.
 
-Location :
-- use a Geocoding or Places AUtocomplete API(which is already have)
-- then, users type a location name, but can only select from real suggestion.
-    example: "Colombo" ✔ ; "asf123"❌ no results;
-- When the user submits, send the selected place to geocoding API and comfirm it exists
+## Key Findings
+
+- **Explore Section – User Listings:** Show users’ own listings in the public Explore section to improve transparency, consistency, and user experience.  
+- **List Reload Bug:** Slight upward scrolls at the top of the list trigger unnecessary reloads (noticed mainly in the Explore tab).  
+- **Delete Confirmation:** When a user tries to delete a listing, change the warning button from “Confirm” to “Delete” for clarity.  
+- **Booking Tab Refresh:** Cancel/other status marks don’t update until reloading the My Booking section. Ensure the tab refreshes when users return (but do not apply this to Explore).  
+- **Length, Width, Depth Warnings:** Error messages for values exceeding the maximum are cut off in the layout (e.g., “max 300…” not fully visible).  
+- **Notifications:** Add notifications when a user receives a booking or message.  
+- **Red Dot Indicators:** Add a red dot on Booking and Messages tabs.  
+- **Optional Notification Summary:** If notifications are numerous, send a single message like “4+ messages / Check bookings and messages.”  
+- **Data Validation – Address, Phone, Vehicle Registration:** Currently, users can enter invalid numbers or characters:  
+  - Example: location `55`, phone `.` , vehicle registration `a37dh**` — all are accepted.  
+- **Phone Numbers:** Validate numbers globally (7–15 digits). Examples:  
+
+| Country | Example Phone Number | Digits |
+|---------|-------------------|--------|
+| USA     | +1 202-555-0176    | 10     |
+| LK      | +94 71 234 5678    | 9      |
+| JPN     | +81 3-1234-5678    | 9      |
+| BZL     | +55 11 91234-5678  | 10–11  |
+
+- **Location Validation:**  
+  - Use a Geocoding or Places Autocomplete API.  
+  - Users type a location name but can only select from real suggestions. Example: "Colombo" ✔ ; "asf123" ❌.  
+  - On submit, confirm the location exists via the API.  
+  - Optional: Add a map picker to select the location visually.  
+- **Vehicle Registration Validation:**  
+  - Collect vehicle data: owner name, plate number, make/model, year, color, location, etc.  
+  - Verify location via autocomplete and map picker.  
+  - Validate plate number using regex (e.g., WP CAE 1234).  
+  - Optional: Upload vehicle photo and registration certificate.  
+
 ---
-but if you want you can add a Google map or some map and is a map picker. when it's gonna enter a location
 
-  Vehicle registration:
-add a feture to confirm it's a real vehicle
-- From: collect data of the vehicle (owner name, plate number, make/modle, year, color, location, etc.)
-- Verify location: Use autocomple + map picker
-- Ask for validate plate number (use regex... WP CAE 1234)
-- Upload (optional but recommed) : vehicle photo, registration certi.
+# Longer and More Detailed Test Report Feedback
 
-  
+Let's go through everything I noticed while testing the app — including potential bugs and areas of confusion:
+
+1. Show users’ own listings in the public Explore section for transparency and consistency.  
+2. Slight upward scrolls at the top of the list trigger unnecessary reloads (noticed mainly in the Explore tab).  
+3. When deleting a listing, the confirmation button should read “Delete” instead of “Confirm.”  
+4. In My Booking, cancel/other status marks do not update automatically. Refresh the tab when users return (don’t apply to Explore).  
+5. Error messages for exceeding length, width, and depth are truncated in the layout (e.g., “max 300…”).  
+6. Add notifications for new bookings or messages.  
+7. Display a red dot on Booking and Messages tabs.  
+8. Optional: If notifications are numerous, send a summary message (e.g., “4+ messages / Check bookings and messages”).  
+9. Data validation issues: addresses, phone numbers, and vehicle registration numbers currently accept invalid inputs:  
+   - Location: `55`  
+   - Phone number: `.`  
+   - Vehicle registration: `a37dh**`  
+10. **Phone Numbers:** Validate 7–15 digits globally. Examples:  
+
+| Country | Example Phone Number | Digits |
+|---------|-------------------|--------|
+| USA     | +1 202-555-0176    | 10     |
+| LK      | +94 71 234 5678    | 9      |
+| JPN     | +81 3-1234-5678    | 9      |
+| BZL     | +55 11 91234-5678  | 10–11  |
+
+11. **Location Validation:**  
+    - Use a Geocoding or Places Autocomplete API.  
+    - Users can only select from valid suggestions (e.g., "Colombo" ✔ ; "asf123" ❌).  
+    - Confirm the selected place exists via API.  
+    - Optional: Map picker for location selection.  
+12. **Vehicle Registration Validation:**  
+    - Collect full vehicle data (owner, plate, make/model, year, color, location).  
+    - Verify location with autocomplete + map picker.  
+    - Validate plate number format using regex (e.g., WP CAE 1234).  
+    - Optional: Upload vehicle photo and registration certificate.  
+
+---
+
+**Note:** These are just some observations and ideas to make the app even better. Overall, the app is looking solid, so think of this as friendly feedback rather than anything urgent.
